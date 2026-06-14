@@ -57,7 +57,7 @@ function Login() {
               </div>
 
               <div>
-                <Link to="/ForgotPassword" className="text-blue-600 text-base">
+                <Link to="/forgot-password" className="text-blue-600 text-base">
                   Lupa Kata Sandi?
                 </Link>
               </div>

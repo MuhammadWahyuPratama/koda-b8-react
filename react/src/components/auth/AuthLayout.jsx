@@ -6,7 +6,7 @@ function AuthLayout({ children, bannerType }) {
       <AuthBanner bannerType={bannerType} />
 
       <section className="w-1/2 flex bg-gray-100 items-center justify-center">
-        <div className="w-full max-w-md">{children}</div>
+        <div className="w-full max-w-xl">{children}</div>
       </section>
     </main>
   );

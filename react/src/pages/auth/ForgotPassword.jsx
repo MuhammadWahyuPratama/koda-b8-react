@@ -1,12 +1,74 @@
-function ForgotPassword () {
-    return (
-        <div>
+import AuthLayout from "../../components/auth/AuthLayout";
+import { Link } from "react-router-dom";
+import { Mail, ArrowLeft, Navigation } from "lucide-react";
 
-            <h1>
-                Forgot Password
-            </h1>
+function ForgotPassword() {
+  return (
+    <AuthLayout bannerType="forgotPassword">
+      <form className="flex flex-col gap-7 mb-10">
+        <article>
+          <Link to="/" className="text-gray-500 text-base flex gap-3">
+            <ArrowLeft className="w-5 h-5 text-gray-500" /> kembali ke login
+          </Link>
+        </article>
+        <section className="flex flex-col gap-2">
+          <h1 className="text-3xl font-bold">Lupa Kata Sandi?</h1>
+          <p className="text-lg text-gray-500">
+            Tidak perlu khawatir. Masukkan email yang terdaftar dan kami akan
+            mengirimkan tautan untuk membuat kata sandi baru.
+          </p>
+        </section>
+
+        <section className="flex flex-col gap-5">
+          <div className="flex flex-col gap-5">
+            <p>Alamat Email</p>
+            <div className="flex w-full items-center bg-gray-100 gap-5 border-1 rounded-xl p-5 ">
+              <Mail className="w-5 h-5 text-gray-400" />
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="email@contoh.com"
+              />
+            </div>
+          </div>
+        </section>
+
+        <div className="bg-blue-600 rounded-xl flex justify-center items-center ">
+          <button
+            type="submit"
+            className="text-white text-2xl flex items-center gap-5 cursor-pointer justify-center py-5"
+          >
+            <Navigation className="w-5 h-5" />
+            <p className="flex -items-center">kirim Tautan Reset</p>
+          </button>
         </div>
-    )
+      </form>
+
+      <footer className="flex flex-col justify-center items-center gap-5">
+        <div className=" flex flex-col justify-center bg-gray-200 w-full rounded-xl p-5">
+          <div className="text-xl font-semibold ">
+            <h3>💡 Tips keamanan:</h3>
+          </div>
+
+          <div className="text-gray-500 text-lg ">
+            <p>• Pastikan kamu memeriksa folder spam/junk email</p>
+            <p>• Tautan reset hanya berlaku selama 30 menit</p>
+            <p>• Jangan bagikan tautan reset kepada siapapun</p>
+          </div>
+        </div>
+
+        <div>
+          <p className="text-center text-gray-500 text-lg">
+            Ingat kata Sandi Kamu?
+            <Link to="/">
+              <span className="text-blue-500"> Masuk disini</span>
+            </Link>
+          </p>
+        </div>
+      </footer>
+    </AuthLayout>
+  );
 }
 
-export default ForgotPassword()
+export default ForgotPassword;

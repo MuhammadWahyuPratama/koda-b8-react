@@ -25,6 +25,17 @@ function AuthBanner({ bannerType }) {
     ];
     background = "/assets/auth-register.jpg";
   }
+
+  if (bannerType === "forgotPassword") {
+    title = ["Akun kamu aman", "bersama kami"];
+
+    description = [
+      "Kami menggunakan enskripsi tingkat militer",
+      "untuk menjaga keamanan data dan transaksimu. ",
+    ];
+
+    background = "/assets/auth-forgotpassword.svg";
+  }
   return (
     <section className="relative w-1/2 overflow-hidden">
       <img
@@ -79,6 +90,18 @@ function AuthBanner({ bannerType }) {
             <div>
               <h3 className="text-3xl font-bold text-white">4.8★</h3>
               <p className="text-gray-300 mt-1">Rating</p>
+            </div>
+          </section>
+        )}
+
+        {bannerType === "forgotPassword" && (
+          <section>
+            <div className="flex flex-col gap-2 text-gray-300 text-lg mt-15">
+              <p>🔒 Enkripsi SSL 256-bit</p>
+
+              <p>🛡️ Perlindungan data pribadi</p>
+
+              <p>📧 Verifikasi dua langkah</p>
             </div>
           </section>
         )}
