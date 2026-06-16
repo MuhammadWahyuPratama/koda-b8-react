@@ -124,6 +124,68 @@ function LandingPage() {
     },
   ];
 
+  const produkUnggulan = [{
+      id: 1,
+      image: headphoneWirelessPremium,
+      brand: "SoundWave",
+      name: "Headphone Wireless Premium",
+      rating: 4.8,
+      review: 512,
+      price: "Rp 450.000",
+      oldPrice: "Rp 650.000",
+    },
+    {
+      id: 2,
+      image: headphoneWirelessPremium,
+      brand: "SoundWave",
+      name: "Headphone Wireless Premium",
+      rating: 4.8,
+      review: 512,
+      price: "Rp 450.000",
+      oldPrice: "Rp 650.000",
+    },
+    {
+      id: 3,
+      image: headphoneWirelessPremium,
+      brand: "SoundWave",
+      name: "Headphone Wireless Premium",
+      rating: 4.8,
+      review: 512,
+      price: "Rp 450.000",
+      oldPrice: "Rp 650.000",
+    },
+    {
+      id: 4,
+      image: headphoneWirelessPremium,
+      brand: "SoundWave",
+      name: "Headphone Wireless Premium",
+      rating: 4.8,
+      review: 512,
+      price: "Rp 450.000",
+      oldPrice: "Rp 650.000",
+    },
+    {
+      id: 5,
+      image: headphoneWirelessPremium,
+      brand: "SoundWave",
+      name: "Headphone Wireless Premium",
+      rating: 4.8,
+      review: 512,
+      price: "Rp 450.000",
+      oldPrice: "Rp 650.000",
+    },
+    {
+      id: 6,
+      image: headphoneWirelessPremium,
+      brand: "SoundWave",
+      name: "Headphone Wireless Premium",
+      rating: 4.8,
+      review: 512,
+      price: "Rp 450.000",
+      oldPrice: "Rp 650.000",
+    },
+  ];
+
   
     return (
         <>
@@ -169,7 +231,7 @@ function LandingPage() {
                 Harga Terbaik
             </p>
             
-            <button type="button"  className="border-1 p-2 text-white border-white rounded-xl">
+            <button type="button" className="border-1 p-2 text-white border-white rounded-xl">
                 Lihat Produk
             </button>
 
@@ -181,6 +243,8 @@ function LandingPage() {
    </section>
 
    <ProductSection title="Produk Terbaru" products={produkTerbaru} />
+   <ProductSection title="Produk Unggulan" products={produkUnggulan} />
+
 
    </>
     )
