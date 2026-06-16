@@ -61,7 +61,7 @@ function ForgotPassword() {
         <div>
           <p className="text-center text-gray-500 text-lg">
             Ingat kata Sandi Kamu?
-            <Link to="/">
+            <Link to="/login">
               <span className="text-blue-500"> Masuk disini</span>
             </Link>
           </p>

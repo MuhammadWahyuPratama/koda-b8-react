@@ -16,7 +16,7 @@ function Register() {
           <h1 className="text-3xl font-bold">Buat Akun Baru</h1>
           <p className="text-xl">
             Sudah Punya Akun?
-            <Link to="/" className="text-blue-600">
+            <Link to="/login" className="text-blue-600">
              <span> Masuk di sini</span> 
             </Link>
           </p>

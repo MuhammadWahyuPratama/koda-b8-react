@@ -223,7 +223,7 @@ function BrowseProducts() {
             <div className="flex items-center gap-3">
               <span className="text-sm text-gray-400">Urutkan:</span>
 
-              <select className="border rounded-lg px-3 py-2 text-sm outline-none">
+              <select className="border rounded-lg px-3 cursor-pointer py-2 text-sm outline-none">
                 <option>Paling Populer</option>
                 <option>Harga Terendah</option>
                 <option>Harga Tertinggi</option>
@@ -232,7 +232,7 @@ function BrowseProducts() {
             </div>
           </div>
 
-          <div className="grid grid-cols-4 gap-5">
+          <div className="grid grid-cols-4 gap-4">
             {products.map((product) => (
               <ProductCard
                 key={product.id}
