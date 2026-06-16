@@ -5,8 +5,8 @@ function AuthLayout({ children, bannerType }) {
     <main className="min-h-screen flex">
       <AuthBanner bannerType={bannerType} />
 
-      <section className="w-1/2 flex bg-gray-100 items-center justify-center">
-        <div className="w-full max-w-xl">{children}</div>
+      <section className="w-1/2 bg-gray-100 flex justify-center items-start py-10">
+        <div className="w-full max-w-md">{children}</div>
       </section>
     </main>
   );

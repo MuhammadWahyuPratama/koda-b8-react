@@ -1,3 +1,8 @@
+import {
+  authBanner,
+  authForgotPassword,
+  authRegister,
+} from "../../assets";
 import { CircleCheckBig } from "lucide-react";
 
 function AuthBanner({ bannerType }) {
@@ -11,7 +16,7 @@ function AuthBanner({ bannerType }) {
       "terbaik, pengiriman cepat, dan",
       "pembayaran yang aman.",
     ];
-    background = "/assets/auth-banner.svg";
+    background = authBanner;
   }
 
   if (bannerType === "register") {
@@ -23,7 +28,7 @@ function AuthBanner({ bannerType }) {
       " Simpan wishlist & alamat favorit",
       " Dapatkan notifikasi promo eksklusif",
     ];
-    background = "/assets/auth-register.jpg";
+    background = authRegister;
   }
 
   if (bannerType === "forgotPassword") {
@@ -34,7 +39,7 @@ function AuthBanner({ bannerType }) {
       "untuk menjaga keamanan data dan transaksimu. ",
     ];
 
-    background = "/assets/auth-forgotpassword.svg";
+    background = authForgotPassword;
   }
   return (
     <section className="relative w-1/2 overflow-hidden">
@@ -55,7 +60,7 @@ function AuthBanner({ bannerType }) {
           <h2 className="text-2xl font-bold text-white">BeliMudah</h2>
         </header>
 
-        <section className="mt-24">
+        <section className="">
           <div className="text-5xl font-bold text-white leading-tight">
             {title.map((item) => (
               <h1 key={item}>{item}</h1>

@@ -1,5 +1,13 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import {
+  elektronik,
+  fashion,
+  rumahDapur,
+  kecantikan,
+  olahraga,
+  bukuAlatTulis,
+} from "../../assets";
 
 function CategorySection() {
   return (
@@ -20,7 +28,7 @@ function CategorySection() {
           <div className="w-full h-36 gap-3 flex justify-center items-center flex-col border-1 border-gray-300 rounded-lg">
             <div>
               <img
-                src="assets/Elektronik.svg"
+                src={elektronik}
                 className="w-16 h-16 rounded-lg"
               />
             </div>
@@ -34,7 +42,7 @@ function CategorySection() {
            <div className="w-full h-36 gap-3 flex justify-center items-center flex-col border-1 border-gray-300 rounded-lg">
             <div>
               <img
-                src="assets/Fashion.svg"
+                src={fashion}
                 className="w-16 h-16 rounded-lg"
               />
             </div>
@@ -48,7 +56,7 @@ function CategorySection() {
            <div className="w-full h-36 gap-3 flex justify-center items-center flex-col border-1 border-gray-300 rounded-lg">
             <div>
               <img
-                src="assets/Rumah & Dapur.svg"
+                src={rumahDapur}
                 className="w-16 h-16 rounded-lg"
               />
             </div>
@@ -62,7 +70,7 @@ function CategorySection() {
            <div className="w-full h-36 gap-3 flex justify-center items-center flex-col border-1 border-gray-300 rounded-lg">
             <div>
               <img
-                src="assets/Kecantikan.svg"
+                src={kecantikan}
                 className="w-16 h-16 rounded-lg"
               />
             </div>
@@ -76,7 +84,7 @@ function CategorySection() {
            <div className="w-full h-36 gap-3 flex justify-center items-center flex-col border-1 border-gray-300 rounded-lg">
             <div>
               <img
-                src="assets/Olahraga.svg"
+                src={olahraga}
                 className="w-16 h-16 rounded-lg"
               />
             </div>
@@ -90,7 +98,7 @@ function CategorySection() {
            <div className="w-full h-36 gap-3 flex justify-center items-center flex-col border-1 border-gray-300 rounded-lg">
             <div>
               <img
-                src="assets/Buku & Alat Tulis.svg"
+                src={bukuAlatTulis}
                 className="w-16 h-16 rounded-lg"
               />
             </div>

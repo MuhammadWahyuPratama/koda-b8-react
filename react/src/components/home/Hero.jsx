@@ -1,5 +1,6 @@
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import { hero, hero2 } from "../../assets";
 
 function Hero() {
   return (
@@ -35,7 +36,7 @@ function Hero() {
 
       
       <img
-        src="/assets/hero2.png"
+        src={hero2}
         alt="Hero"
         className="absolute bottom-0 right-0 hidden lg:block w-[580px] xl:w-[680px] 2xl:w-[760px]
         "

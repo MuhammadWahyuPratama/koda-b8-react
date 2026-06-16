@@ -5,7 +5,7 @@ import { Mail, Lock, SquareArrowRight,Eye } from "lucide-react";
 function Login() {
   return (
     <AuthLayout bannerType="login">
-      <form className="flex flex-col gap-7 mb-10">
+      <form className="flex flex-col gap-5">
         <section className="flex flex-col gap-2">
           <h1 className="text-3xl font-bold">Masuk ke Akun</h1>
           <p className="text-xl">
@@ -26,7 +26,7 @@ function Login() {
           </div>
         </section>
 
-        <div className="flex items-center gap-4 my-6">
+        <div className="flex items-center gap-4 my-4">
           <div className="flex-1 h-px bg-gray-300"></div>
 
           <span className="text-sm text-gray-500 whitespace-nowrap">
@@ -39,7 +39,7 @@ function Login() {
         <section className="flex flex-col gap-5">
           <div className="flex flex-col gap-5">
             <p>Email</p>
-            <div className="flex w-full items-center bg-gray-100 gap-5 border-1 rounded-xl p-5 ">
+            <div className="flex w-full items-center bg-gray-100 gap-4 border rounded-xl px-5 py-4">
               <Mail className="w-5 h-5 text-gray-400" />
               <input
                 type="email"
@@ -63,7 +63,7 @@ function Login() {
               </div>
             </div>
 
-            <div className="flex w-full justify-between items-center bg-gray-100 gap-5 border-1 rounded-xl p-5">
+            <div className="flex w-full justify-between items-center bg-gray-100 gap-4 border rounded-xl px-5 py-4">
               <div className="flex gap-5">
                 <Lock className="w-5 h-5 text-gray-400" />
                 <input
@@ -87,7 +87,7 @@ function Login() {
         <div className="bg-blue-600 rounded-xl flex justify-center items-center ">
           <button
             type="submit"
-            className="text-white text-2xl flex items-center gap-5 cursor-pointer justify-center py-5"
+            className="text-white text-xl flex items-center gap-3 justify-center py-4"
           >
             <SquareArrowRight />
             <p className="flex -items-center">Masuk</p>
@@ -95,7 +95,7 @@ function Login() {
         </div>
       </form>
 
-      <footer className="flex flex-col justify-center items-center gap-5">
+      <footer className="flex flex-col justify-center items-center gap-3">
         <div>
           <p>🔒 Login aman dengan enkripsi SSL 256-bit</p>
         </div>
