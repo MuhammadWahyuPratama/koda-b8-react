@@ -1,7 +1,7 @@
 import { FiCheck, FiChevronRight, FiLock } from "react-icons/fi";
 
-import { headphoneWirelessPremium } from "../../assets";
 import { GiDiceSixFacesFive } from "react-icons/gi";
+import { headphoneWirelessPremium } from "../../assets";
 
 function ConfirmationPage() {
   return (

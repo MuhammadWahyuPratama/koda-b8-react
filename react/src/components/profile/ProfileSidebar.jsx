@@ -98,7 +98,9 @@ function ProfileSidebar({ active }) {
           >
             <FiLogOut className="w-5 h-5" />
 
-            <span className="text-sm font-medium">Keluar</span>
+            <Link to="/login" className="text-sm font-medium">
+              Keluar
+            </Link>
           </button>
         </div>
       </section>
