@@ -19,6 +19,10 @@ import ShippingPage from "./pages/checkout/ShippingPage";
 import PaymentPage from "./pages/checkout/PaymentPage";
 import ConfirmationPage from "./pages/checkout/ConfirmationPage";
 import SuccessPage from "./pages/checkout/SuccessPage";
+import MyOrderPage from "./pages/profile/MyOrderPage";
+import WishlistPage from "./pages/profile/WishlistPage";
+import AddressListPage from "./pages/profile/AddressListPage";
+import EditProfilePage from "./pages/profile/EditProfilePage";
 
 const router = createBrowserRouter([
   // ================= AUTH =================
@@ -74,6 +78,27 @@ const router = createBrowserRouter([
           {
             path: "success",
             element: <SuccessPage />,
+          },
+        ],
+      },
+      {
+        path: "profile",
+        children: [
+          {
+            path: "profileorder",
+            element: <MyOrderPage />,
+          },
+          {
+            path: "wishlist",
+            element: <WishlistPage />,
+          },
+          {
+            path: "address",
+            element: <AddressListPage />,
+          },
+          {
+            path: "editprofile",
+            element: <EditProfilePage />,
           },
         ],
       },
