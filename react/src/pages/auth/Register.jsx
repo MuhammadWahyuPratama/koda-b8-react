@@ -1,23 +1,34 @@
 import AuthLayout from "../../components/auth/AuthLayout";
 import { Link } from "react-router-dom";
-import {
-  Mail,
-  Lock,
-  User,
-  Eye,
-  ArrowRight,
-} from "lucide-react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Mail, Lock, User, Eye, ArrowRight } from "lucide-react";
+import registerSchema from "../../validation/registerSchema";
 
 function Register() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(registerSchema),
+    mode: "onBlur",
+  });
+
+  const onSubmit = (data) => {
+    console.log(data);
+    console.log(errors);
+  };
+
   return (
     <AuthLayout bannerType="register">
-      <form className="flex flex-col gap-3 mb-5">
-        <section className="flex flex-col gap-3 mb-7 ">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3 ">
+        <section className="flex flex-col gap-3  ">
           <h1 className="text-3xl font-bold">Buat Akun Baru</h1>
           <p className="text-xl">
             Sudah Punya Akun?
             <Link to="/login" className="text-blue-600">
-             <span> Masuk di sini</span> 
+              <span> Masuk di sini</span>
             </Link>
           </p>
         </section>
@@ -29,13 +40,12 @@ function Register() {
 
           <div className="w-full py-3 rounded-xl flex justify-center items-center text-gray-500 text-xl border-2">
             <Link to={"https://www.google.com/?hl=id"}>
-              {" "}
               Daftar via Facebook
             </Link>
           </div>
         </section>
 
-        <div className="flex items-center gap-4 my-6">
+        <div className="flex items-center gap-4 mt-6">
           <div className="flex-1 h-px bg-gray-300"></div>
 
           <span className="text-sm text-gray-500 whitespace-nowrap">
@@ -45,31 +55,51 @@ function Register() {
           <div className="flex-1 h-px bg-gray-300"></div>
         </div>
 
-        <section className="flex flex-col gap-7">
-          <div className="flex flex-col gap-5">
+        <section className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2">
             <p>Nama Lengkap</p>
-            <div className="flex w-full items-center bg-gray-100 gap-5 border-1 rounded-xl p-5 ">
-              <User className="w-5 h-5 text-gray-400" />
+            <div
+              className={`flex w-full items-center bg-gray-100 gap-5 border ${errors.fullName ? "border-red-500" : "border-gray-300"} rounded-xl p-5`}
+            >
+              <User
+                className={`w-5 h-5  text-gray-400 ${errors.fullName ? "text-red-500" : "text-gray-300"}`}
+              />
               <input
                 type="text"
-                name="fullName"
+                {...register("fullName")}
                 id="fullName"
                 placeholder="Nama lengkap kamu"
+                className="bg-transparent outline-none flex-1"
               />
             </div>
+            {errors.fullName && (
+              <p className="text-sm text-red-500 mt-2 ml-1">
+                {errors.fullName?.message}
+              </p>
+            )}
           </div>
 
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-2">
             <p>Email</p>
-            <div className="flex w-full items-center bg-gray-100 gap-5 border-1 rounded-xl p-5 ">
-              <Mail className="w-5 h-5 text-gray-400" />
+            <div
+              className={`flex w-full items-center bg-gray-100 gap-5 border ${errors.email ? "border-red-500" : "border-gray-300"} rounded-xl p-5`}
+            >
+              <Mail
+                className={`w-5 h-5  text-gray-400 ${errors.email ? "text-red-500" : "text-gray-300"}`}
+              />
               <input
                 type="email"
-                name="email"
+                {...register("email")}
                 id="email"
                 placeholder="email@contoh.com"
+                className="bg-transparent outline-none flex-1"
               />
             </div>
+            {errors.email && (
+              <p className="text-sm text-red-500 mt-2 ml-1">
+                {errors.email?.message}
+              </p>
+            )}
           </div>
 
           <div className="flex flex-col gap-2">
@@ -79,19 +109,29 @@ function Register() {
               </div>
             </div>
 
-            <div className="flex w-full justify-between items-center bg-gray-100 gap-5 border-1 rounded-xl p-5">
+            <div
+              className={`flex w-full items-center bg-gray-100 justify-between gap-5 border ${errors.password ? "border-red-500" : "border-gray-300"} rounded-xl p-5`}
+            >
               <div className="flex gap-5">
-                <Lock className="w-5 h-5 text-gray-400" />
+                <Lock
+                  className={`w-5 h-5  text-gray-400 ${errors.password ? "text-red-500" : "text-gray-300"}`}
+                />
                 <input
                   type="password"
-                  name="password"
+                  {...register("password")}
                   id="password"
                   placeholder="Minimal 6 karakter"
+                  className="bg-transparent outline-none flex-1"
                 />
               </div>
 
               <Eye className="w-5 h-5 text-gray-400" />
             </div>
+            {errors.password && (
+              <p className="text-sm text-red-500 mt-2 ml-1">
+                {errors.password?.message}
+              </p>
+            )}
           </div>
 
           <div className="flex flex-col gap-2">
@@ -101,28 +141,40 @@ function Register() {
               </div>
             </div>
 
-            <div className="flex w-full justify-between items-center bg-gray-100 gap-5 border-1 rounded-xl p-5">
+            <div
+              className={`flex w-full items-center justify-between bg-gray-100 gap-5 border ${errors.confirmPassword ? "border-red-500" : "border-gray-300"} rounded-xl p-5`}
+            >
               <div className="flex gap-5">
-                <Lock className="w-5 h-5 text-gray-400" />
+                <Lock
+                  className={`w-5 h-5  text-gray-400 ${errors.confirmPassword ? "text-red-500" : "text-gray-300"}`}
+                />
                 <input
                   type="password"
-                  name="confirmPassword"
+                  {...register("confirmPassword")}
                   id="confirmPassword"
                   placeholder="Ulangi Kata Sandi"
+                  className="bg-transparent outline-none flex-1"
                 />
               </div>
 
               <Eye className="w-5 h-5 text-gray-400" />
             </div>
+            {errors.confirmPassword && (
+              <p className="text-sm text-red-500 mt-2 ml-1">
+                {errors.confirmPassword?.message}
+              </p>
+            )}
           </div>
         </section>
 
         <div className="flex gap-4 text-gray-700">
           <input type="checkbox" name="remember" id="remember" />
           <label htmlFor="remember">
-            <p>Saya Menyetujui 
-            <span className="text-blue-600"> Syarat & Ketentuan</span> dan
-            <span className="text-blue-600"> Kebijakan privasi </span>Belimudah
+            <p>
+              Saya Menyetujui
+              <span className="text-blue-600"> Syarat & Ketentuan</span> dan
+              <span className="text-blue-600"> Kebijakan privasi </span>
+              Belimudah
             </p>
           </label>
         </div>
