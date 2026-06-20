@@ -52,8 +52,8 @@ function Register() {
               <User className="w-5 h-5 text-gray-400" />
               <input
                 type="text"
-                name="fullname"
-                id="fullname"
+                name="fullName"
+                id="fullName"
                 placeholder="Nama lengkap kamu"
               />
             </div>
@@ -106,8 +106,8 @@ function Register() {
                 <Lock className="w-5 h-5 text-gray-400" />
                 <input
                   type="password"
-                  name="konfirmPassword"
-                  id="konfirmPassword"
+                  name="confirmPassword"
+                  id="confirmPassword"
                   placeholder="Ulangi Kata Sandi"
                 />
               </div>
