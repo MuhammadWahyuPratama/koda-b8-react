@@ -1,9 +1,10 @@
 import AuthLayout from "../../components/auth/AuthLayout";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Mail, Lock, User, Eye, ArrowRight } from "lucide-react";
 import registerSchema from "../../validation/registerSchema";
+import authService from "../../services/authService";
 
 function Register() {
   const {
@@ -15,9 +16,19 @@ function Register() {
     mode: "onBlur",
   });
 
+  const navigate = useNavigate();
+
   const onSubmit = (data) => {
-    console.log(data);
-    console.log(errors);
+    try {
+      const { confirmPassword, ...userData } = data;
+
+      authService.register(userData);
+
+      window.alert("Registrasi berhasil!");
+      navigate("/login");
+    } catch (error) {
+      window.alert(error.message);
+    }
   };
 
   return (
@@ -85,7 +96,7 @@ function Register() {
               className={`flex w-full items-center bg-gray-100 gap-5 border ${errors.email ? "border-red-500" : "border-gray-300"} rounded-xl p-5`}
             >
               <Mail
-                className={`w-5 h-5  text-gray-400 ${errors.email ? "text-red-500" : "text-gray-300"}`}
+                className={`w-5 h-5   ${errors.email ? "text-red-500" : "text-gray-300"}`}
               />
               <input
                 type="email"
@@ -114,7 +125,7 @@ function Register() {
             >
               <div className="flex gap-5">
                 <Lock
-                  className={`w-5 h-5  text-gray-400 ${errors.password ? "text-red-500" : "text-gray-300"}`}
+                  className={`w-5 h-5 ${errors.password ? "text-red-500" : "text-gray-300"}`}
                 />
                 <input
                   type="password"
@@ -146,7 +157,7 @@ function Register() {
             >
               <div className="flex gap-5">
                 <Lock
-                  className={`w-5 h-5  text-gray-400 ${errors.confirmPassword ? "text-red-500" : "text-gray-300"}`}
+                  className={`w-5 h-5 ${errors.confirmPassword ? "text-red-500" : "text-gray-300"}`}
                 />
                 <input
                   type="password"
