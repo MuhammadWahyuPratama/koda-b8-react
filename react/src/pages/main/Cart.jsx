@@ -3,6 +3,7 @@ import { headphoneWirelessPremium } from "../../assets";
 import cartService from "../../services/cartService";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import wishlistService from "../../services/wishlistService";
 
 function Cart() {
   const [cart, setCart] = useState([]);
@@ -69,7 +70,17 @@ function Cart() {
                       </button>
                     </div>
 
-                    <button className="flex items-center gap-2 mt-3 text-sm text-gray-500">
+                    <button
+                      onClick={() => {
+                        wishlistService.addToWishlist(item);
+
+                        cartService.removeItem(item.id);
+
+                        setCart(cartService.getCart());
+
+                        alert("Produk dipindahkan ke Wishlist");
+                      }}
+                    >
                       <FiHeart />
                       Simpan ke Wishlist
                     </button>
@@ -85,7 +96,7 @@ function Cart() {
                   </button>
 
                   <p className="text-2xl font-semibold text-blue-600">
-                    Rp {item.price.toLocaleString("id-ID")}
+                    Rp {(item.price * item.qty).toLocaleString("id-ID")}
                   </p>
                 </div>
               </div>
@@ -123,13 +134,17 @@ function Cart() {
 
           <div className="space-y-4 text-sm">
             <div className="flex justify-between">
-              <p className="text-gray-500">Subtotal ({cart.length} item)</p>
+              <div className="flex w-full justify-between text-gray-500 text-sm font-meidum">
+                <p>Subtotal</p>
 
-              <p>Rp 450.000</p>
+                <p className="text-blue-600">
+                  Rp {subtotal.toLocaleString("id-ID")}
+                </p>
+              </div>
             </div>
 
             <div className="flex justify-between">
-              <p className="text-gray-500">Ongkos Kirim</p>
+              <p className="text-gray-500">Ongkir</p>
 
               <p className="text-green-600 font-medium">GRATIS</p>
             </div>

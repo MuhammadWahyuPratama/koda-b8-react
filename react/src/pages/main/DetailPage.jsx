@@ -2,6 +2,7 @@ import { FaStar, FaCheck, FaShoppingCart } from "react-icons/fa";
 import { GoChevronRight } from "react-icons/go";
 import { headphoneWirelessPremium } from "../../assets";
 import ProductSection from "../../components/home/ProductSection";
+import wishlistService from "../../services/wishlistService";
 
 import {
   FiHeart,
@@ -16,9 +17,14 @@ import cartService from "../../services/cartService";
 function DetailPage() {
   const product = {
     id: 1,
-    name: "Headphone Wireless Premium",
     image: headphoneWirelessPremium,
+    brand: "SoundWave",
+    name: "Headphone Wireless Premium",
+    rating: 4.8,
+    review: 512,
     price: 450000,
+    oldPrice: 650000,
+    discount: "-31%",
     color: "Hitam",
     qty: 1,
   };
@@ -37,8 +43,9 @@ function DetailPage() {
       name: "Headphone Wireless Premium",
       rating: 4.8,
       review: 512,
-      price: "Rp 450.000",
-      priceDisc: "Rp 650.000",
+      price: 450000,
+      oldPrice: 650000,
+      discount: "-31%",
     },
     {
       id: 2,
@@ -47,8 +54,9 @@ function DetailPage() {
       name: "Headphone Wireless Premium",
       rating: 4.8,
       review: 512,
-      price: "Rp 450.000",
-      priceDisc: "Rp 650.000",
+      price: 450000,
+      oldPrice: 650000,
+      discount: "-31%",
     },
     {
       id: 3,
@@ -57,8 +65,9 @@ function DetailPage() {
       name: "Headphone Wireless Premium",
       rating: 4.8,
       review: 512,
-      price: "Rp 450.000",
-      priceDisc: "Rp 650.000",
+      price: 450000,
+      oldPrice: 650000,
+      discount: "-31%",
     },
     {
       id: 4,
@@ -67,8 +76,9 @@ function DetailPage() {
       name: "Headphone Wireless Premium",
       rating: 4.8,
       review: 512,
-      price: "Rp 450.000",
-      priceDisc: "Rp 650.000",
+      price: 450000,
+      oldPrice: 650000,
+      discount: "-31%",
     },
   ];
   return (
@@ -150,9 +160,9 @@ function DetailPage() {
 
           <div className="bg-slate-100 rounded-xl p-5 mt-3">
             <div className="flex items-center gap-3">
-              <h2 className="text-2xl font-bold text-blue-600">Rp 450.000</h2>
+              <h2 className="text-2xl font-bold text-blue-600">Rp {product.price.toLocaleString("id-ID")}</h2>
 
-              <p className="line-through text-lg text-gray-400">Rp 650.000</p>
+              <p className="line-through text-lg text-gray-400">Rp {product.oldPrice.toLocaleString("id-ID")}</p>
 
               <span className="bg-red-500 text-white text-xs px-3 py-1 rounded-full">
                 Hemat 31%
@@ -215,7 +225,14 @@ function DetailPage() {
               Beli Sekarang
             </button>
 
-            <button className="border-gray-100 border rounded-xl flex justify-center items-center hover:bg-gray-100">
+            <button
+              onClick={() => {
+                wishlistService.addToWishlist(product);
+
+                alert("Produk ditambahkan ke wishlist");
+              }}
+              className="border-gray-100 border rounded-xl flex justify-center items-center hover:bg-gray-100 cursor-pointer"
+            >
               <FiHeart />
             </button>
           </div>

@@ -1,32 +1,10 @@
-import { headphoneWirelessPremium } from "../../assets";
+import { useState } from "react";
 import ProfileSidebar from "../../components/profile/ProfileSidebar";
 import WishlistCard from "../../components/profile/WishListCard";
+import wishlistService from "../../services/wishlistService";
 
-function AddressListPage() {
-  const wishlist = [
-    {
-      id: 1,
-      image: headphoneWirelessPremium,
-      brand: "SoundWave",
-      name: "Headphone Wireless Premium",
-      rating: 4.8,
-      review: 512,
-      price: "Rp 450.000",
-      oldPrice: "Rp 650.000",
-      discount: "-31%",
-    },
-    {
-      id: 2,
-      image: headphoneWirelessPremium,
-      brand: "SportPro",
-      name: "Sneakers Sport Runfast",
-      rating: 4.6,
-      review: 445,
-      price: "Rp 550.000",
-      oldPrice: "Rp 750.000",
-      discount: "-27%",
-    },
-  ];
+function WishListPage() {
+  const [wishlist, setWishlist] = useState(wishlistService.getWishlist());
   return (
     <main className="max-w-7xl mx-auto py-8">
       <section className="grid grid-cols-[300px_1fr] gap-8">
@@ -37,25 +15,29 @@ function AddressListPage() {
             Wishlist ({wishlist.length})
           </h1>
 
-          <div className="flex flex-wrap gap-6">
-            {wishlist.map((product) => (
-              <WishlistCard
-                key={product.id}
-                image={product.image}
-                brand={product.brand}
-                name={product.name}
-                rating={product.rating}
-                review={product.review}
-                price={product.price}
-                oldPrice={product.oldPrice}
-                discount={product.discount}
-              />
-            ))}
-          </div>
+          {wishlist.length === 0 ? (
+            <div className="border border-gray-200 rounded-xl p-10 w-full text-center">
+              <h2 className="text-2xl font-semibold">Wishlist masih kosong</h2>
+
+              <p className="text-gray-500 mt-2">
+                Simpan produk favoritmu di sini.
+              </p>
+            </div>
+          ) : (
+            <div className="flex flex-wrap gap-6">
+              {wishlist.map((product) => (
+                <WishlistCard
+                  key={product.id}
+                  {...product}
+                  onRemove={() => setWishlist(wishlistService.getWishlist())}
+                />
+              ))}
+            </div>
+          )}
         </section>
       </section>
     </main>
   );
 }
 
-export default AddressListPage;
+export default WishListPage;

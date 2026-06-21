@@ -1,7 +1,10 @@
 import { FiHeart, FiShoppingCart } from "react-icons/fi";
 import { FaStar } from "react-icons/fa";
+import cartService from "../../services/cartService";
+import wishlistService from "../../services/wishlistService";
 
 function WishlistCard({
+  id,
   image,
   brand,
   name,
@@ -10,6 +13,7 @@ function WishlistCard({
   price,
   oldPrice,
   discount,
+  onRemove,
 }) {
   return (
     <article className="w-full max-w-[320px] border border-gray-200 rounded-xl overflow-hidden bg-white">
@@ -22,6 +26,10 @@ function WishlistCard({
 
         <button
           type="button"
+          onClick={() => {
+            wishlistService.removeFromWishlist(id);
+            onRemove();
+          }}
           className="absolute top-3 right-3 w-10 h-10 rounded-full bg-white flex justify-center items-center shadow cursor-pointer hover:bg-gray-100"
         >
           <FiHeart className="w-5 h-5 text-red-500 fill-red-500" />
@@ -30,6 +38,23 @@ function WishlistCard({
 
       <button
         type="button"
+        onClick={() => {
+          cartService.addToCart({
+            id,
+            image,
+            brand,
+            name,
+            rating,
+            review,
+            price,
+            oldPrice,
+            discount,
+            qty: 1,
+          });
+
+          wishlistService.removeFromWishlist(id);
+          onRemove();
+        }}
         className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 text-sm font-medium flex justify-center items-center gap-2 cursor-pointer"
       >
         <FiShoppingCart className="w-5 h-5" />
@@ -54,9 +79,13 @@ function WishlistCard({
         </div>
 
         <div className="flex items-center gap-2 mt-3">
-          <p className="text-xl font-semibold text-blue-600">{price}</p>
+          <p className="text-xl font-semibold text-blue-600">
+            Rp {price.toLocaleString("id-ID")}
+          </p>
 
-          <p className="text-sm text-gray-400 line-through">{oldPrice}</p>
+          <p className="text-sm text-gray-400 line-through">
+            Rp {oldPrice.toLocaleString("id-ID")}
+          </p>
         </div>
       </div>
     </article>

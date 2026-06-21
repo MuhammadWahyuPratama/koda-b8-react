@@ -1,49 +1,12 @@
 import OrderCard from "../../components/profile/OrderCard";
 import ProfileSidebar from "../../components/profile/ProfileSidebar";
-import { headphoneWirelessPremium } from "../../assets";
+import { useNavigate } from "react-router-dom";
+import cartService from "../../services/cartService";
 
 function MyOrderPage() {
-  const orders = [
-    {
-      orderId: "BM98765432",
-      date: "20 Mei 2026",
-      status: "Terkirim",
-      total: "Rp 450.000",
-      showReview: true,
-      products: [
-        {
-          id: 1,
-          image: headphoneWirelessPremium,
-          name: "Headphone Wireless Premium",
-          qty: 1,
-          price: "Rp 450.000",
-        },
-      ],
-    },
-    {
-      orderId: "BM87654321",
-      date: "26 Mei 2026",
-      status: "Dikirim",
-      total: "Rp 800.000",
-      showReview: false,
-      products: [
-        {
-          id: 1,
-          image: headphoneWirelessPremium,
-          name: "Kaos Polos Premium Cotton",
-          qty: 2,
-          price: "Rp 125.000",
-        },
-        {
-          id: 2,
-          image:headphoneWirelessPremium,
-          name: "Sneakers Sport Runfast",
-          qty: 1,
-          price: "Rp 550.000",
-        },
-      ],
-    },
-  ];
+  const navigate = useNavigate();
+
+  const orders = cartService.getOrders();
   return (
     <main className="max-w-7xl mx-auto py-8">
       <section className="grid grid-cols-[280px_1fr] gap-8">
@@ -52,9 +15,34 @@ function MyOrderPage() {
         <section className="flex flex-col gap-6">
           <h1 className="text-3xl font-semibold">Pesanan Saya</h1>
 
-          {orders.map((order) => (
-            <OrderCard key={order.orderId} {...order} />
-          ))}
+          {orders.length === 0 ? (
+            <div className="border border-gray-200 rounded-xl p-10 text-center">
+              <h2 className="text-2xl font-semibold">Belum ada pesanan</h2>
+
+              <p className="text-gray-500 mt-2">
+                Yuk mulai belanja di BeliMudah.
+              </p>
+
+              <button
+                onClick={() => navigate("/")}
+                className="mt-6 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg cursor-pointer"
+              >
+                Belanja Sekarang
+              </button>
+            </div>
+          ) : (
+            orders.map((order) => (
+              <OrderCard
+                key={order.id}
+                orderId={order.orderNumber}
+                date={new Date(order.createdAt).toLocaleDateString("id-ID")}
+                status={order.status}
+                total={`Rp ${order.total.toLocaleString("id-ID")}`}
+                showReview={false}
+                products={order.items}
+              />
+            ))
+          )}
         </section>
       </section>
     </main>
