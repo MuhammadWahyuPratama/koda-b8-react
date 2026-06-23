@@ -36,7 +36,7 @@ function DetailPage() {
     rating: 4.8,
     review: 512,
     price: 450000,
-    oldPrice: 650000,
+    priceDisc: 650000,
     discount: "-31%",
     color: "Hitam",
     qty: 1,
@@ -55,7 +55,7 @@ function DetailPage() {
       rating: 4.8,
       review: 512,
       price: 450000,
-      oldPrice: 650000,
+      priceDisc: 650000,
       discount: "-31%",
     },
     {
@@ -66,7 +66,7 @@ function DetailPage() {
       rating: 4.8,
       review: 512,
       price: 650000,
-      oldPrice: 750000,
+      priceDisc: 750000,
       discount: "-31%",
     },
     {
@@ -77,7 +77,7 @@ function DetailPage() {
       rating: 4.8,
       review: 512,
       price: 450000,
-      oldPrice: 650000,
+      priceDisc: 650000,
       discount: "-31%",
     },
     {
@@ -88,7 +88,7 @@ function DetailPage() {
       rating: 4.8,
       review: 512,
       price: 450000,
-      oldPrice: 650000,
+      priceDisc: 650000,
       discount: "-31%",
     },
   ];
@@ -176,7 +176,7 @@ function DetailPage() {
               </h2>
 
               <p className="line-through text-lg text-gray-400">
-                Rp {product.oldPrice.toLocaleString("id-ID")}
+                Rp {product.priceDisc.toLocaleString("id-ID")}
               </p>
 
               <span className="bg-red-500 text-white text-xs px-3 py-1 rounded-full">

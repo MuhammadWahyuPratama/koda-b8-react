@@ -102,7 +102,7 @@ function BrowseProducts() {
       rating: 4.8,
       review: 512,
       price: "Rp 450.000",
-      priceDisc: "Rp 650.000",
+      preDisc: "Rp 650.000",
     },
     {
       id: 1,

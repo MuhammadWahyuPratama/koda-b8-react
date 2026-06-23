@@ -11,7 +11,7 @@ function WishlistCard({
   rating,
   review,
   price,
-  oldPrice,
+  priceDisc,
   discount,
   onRemove,
 }) {
@@ -47,7 +47,7 @@ function WishlistCard({
             rating,
             review,
             price,
-            oldPrice,
+            priceDisc,
             discount,
             qty: 1,
           });
@@ -84,7 +84,7 @@ function WishlistCard({
           </p>
 
           <p className="text-sm text-gray-400 line-through">
-            Rp {oldPrice.toLocaleString("id-ID")}
+            Rp {priceDisc.toLocaleString("id-ID")}
           </p>
         </div>
       </div>

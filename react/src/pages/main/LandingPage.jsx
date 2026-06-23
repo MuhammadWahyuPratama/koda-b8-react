@@ -2,7 +2,6 @@ import {
   bgLandingPage,
   bgLandingPage1,
   headphoneWirelessPremium,
-  
 } from "../../assets";
 import CategorySection from "../../components/home/CategorySection";
 import Hero from "../../components/home/Hero";
@@ -135,7 +134,7 @@ function LandingPage() {
       rating: 4.8,
       review: 512,
       price: "Rp 450.000",
-      oldPrice: "Rp 650.000",
+      priceDisc: "Rp 650.000",
     },
     {
       id: 2,
@@ -145,7 +144,7 @@ function LandingPage() {
       rating: 4.8,
       review: 512,
       price: "Rp 450.000",
-      oldPrice: "Rp 650.000",
+      priceDisc: "Rp 650.000",
     },
     {
       id: 3,
@@ -155,7 +154,7 @@ function LandingPage() {
       rating: 4.8,
       review: 512,
       price: "Rp 450.000",
-      oldPrice: "Rp 650.000",
+      priceDisc: "Rp 650.000",
     },
     {
       id: 4,
@@ -165,7 +164,7 @@ function LandingPage() {
       rating: 4.8,
       review: 512,
       price: "Rp 450.000",
-      oldPrice: "Rp 650.000",
+      priceDisc: "Rp 650.000",
     },
     {
       id: 5,
@@ -175,7 +174,7 @@ function LandingPage() {
       rating: 4.8,
       review: 512,
       price: "Rp 450.000",
-      oldPrice: "Rp 650.000",
+      priceDisc: "Rp 650.000",
     },
     {
       id: 6,
@@ -185,7 +184,7 @@ function LandingPage() {
       rating: 4.8,
       review: 512,
       price: "Rp 450.000",
-      oldPrice: "Rp 650.000",
+      priceDisc: "Rp 650.000",
     },
   ];
 
@@ -251,54 +250,34 @@ function LandingPage() {
 
         <section className="w-full grid grid-cols-4 px-4 gap-3 justify-center  items-center text-center">
           <div className="flex flex-col gap-2">
-            
-            <p className="text-2xl">
-                🚚
-            </p>
-            <p className="text-sm">
-                Gratis Ongkir
-            </p>
+            <p className="text-2xl">🚚</p>
+            <p className="text-sm">Gratis Ongkir</p>
             <p className="text-gray-400 text-xs">
-                Pembelian di atas Rp 100.000 gratis ongkir ke seluruh Indonesia
+              Pembelian di atas Rp 100.000 gratis ongkir ke seluruh Indonesia
             </p>
           </div>
 
           <div className="flex flex-col gap-2">
-            
-            <p className="text-2xl">
-                🔒
-            </p>
-            <p className="text-sm">
-                Pembayaran Aman
-            </p>
+            <p className="text-2xl">🔒</p>
+            <p className="text-sm">Pembayaran Aman</p>
             <p className="text-gray-400 text-xs">
-                Data kamu terenkripsi dengan standar keamanan tertinggi
+              Data kamu terenkripsi dengan standar keamanan tertinggi
             </p>
           </div>
 
           <div className="flex flex-col gap-2">
-            
-            <p className="text-2xl">
-                ↩️
-            </p>
-            <p className="text-sm">
-                Retur Mudah
-            </p>
+            <p className="text-2xl">↩️</p>
+            <p className="text-sm">Retur Mudah</p>
             <p className="text-gray-400 text-xs">
-               Produk tidak sesuai? Kembalikan dalam 30 hari tanpa ribet
+              Produk tidak sesuai? Kembalikan dalam 30 hari tanpa ribet
             </p>
           </div>
 
           <div className="flex flex-col gap-2">
-            
-            <p className="text-2xl">
-                💬
-            </p>
-            <p className="text-sm">
-               CS 24/7
-            </p>
+            <p className="text-2xl">💬</p>
+            <p className="text-sm">CS 24/7</p>
             <p className="text-gray-400 text-xs">
-                Tim kami siap membantu kamu kapan saja
+              Tim kami siap membantu kamu kapan saja
             </p>
           </div>
         </section>

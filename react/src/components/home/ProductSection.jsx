@@ -20,17 +20,7 @@ function ProductSection({ title, products }) {
 
         <section className="grid grid-cols-4 gap-4">
           {products.map((product) => (
-            <ProductCard
-              key={product.id}
-              id={product.id}
-              image={product.image}
-              brand={product.brand}
-              name={product.name}
-              rating={product.rating}
-              review={product.review}
-              price={product.price}
-              priceDisc={product.priceDisc}
-            />
+            <ProductCard key={product.id} product={product} />
           ))}
         </section>
       </section>
