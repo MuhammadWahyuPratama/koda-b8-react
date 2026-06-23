@@ -46,9 +46,13 @@ function EditProfilePage() {
               </div>
 
               <div>
-                <label className="text-sm text-gray-500">Email</label>
+                <label htmlFor="email" className="text-sm text-gray-500">
+                  Email
+                </label>
 
                 <input
+                  name="email"
+                  id="email"
                   type="email"
                   defaultValue="budi@email.com"
                   className="w-full mt-2 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-blue-500"

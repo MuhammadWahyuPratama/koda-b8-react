@@ -1,65 +1,131 @@
-import { Bell, Heart, Search, ShoppingCart, User } from "lucide-react";
-import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+
+import {
+  FaShoppingBag,
+  FaSearch,
+  FaBell,
+  FaHeart,
+  FaShoppingCart,
+  FaUserCircle,
+  FaBars,
+} from "react-icons/fa";
 
 function MainBar() {
   const { user } = useAuth();
+
   return (
-    <nav className="w-full border-b  border-gray-200 bg-white">
-      <div className="mx-auto flex max-w-7xl items-center justify-start gap-6 px-4 py-4">
-        <div className="flex-shrink-0 flex gap-2 justify-center items-center">
-          <div className="bg-blue-600 rounded-xl w-10 h-10 flex justify-center items-center">
-            <h1 className="text-white font-bold text-sm">B</h1>
+    <nav className="w-full border-b border-slate-200 bg-white">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="flex h-20 items-center justify-between">
+          <Link to="/" className="flex items-center gap-3">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-600 shadow-md">
+              <FaShoppingBag className="text-lg text-white" />
+            </div>
+
+            <div>
+              <h1 className="text-lg font-bold text-slate-800 sm:text-xl">
+                BeliMudah
+              </h1>
+
+              <p className="hidden text-xs text-slate-500 sm:block">
+                Smart Shopping
+              </p>
+            </div>
+          </Link>
+
+          <div className="mx-8 hidden flex-1 lg:block">
+            <div className="relative">
+              <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+
+              <input
+                aria-label="search"
+                type="text"
+                placeholder="Cari produk, merek, kategori..."
+                className="w-full rounded-full border border-slate-200 bg-slate-50 py-3 pl-11 pr-4 text-sm outline-none transition focus:border-emerald-500 focus:bg-white"
+              />
+            </div>
           </div>
 
-          <p className="text-base ">BeliMudah</p>
+          <div className="hidden items-center gap-2 lg:flex">
+            <button className="rounded-full p-3 transition hover:bg-slate-100 hover:text-emerald-600">
+              <FaBell />
+            </button>
+
+            <Link
+              to="/profile/wishlist"
+              className="rounded-full p-3 transition hover:bg-slate-100 hover:text-emerald-600"
+            >
+              <FaHeart />
+            </Link>
+
+            <Link
+              to="/cart"
+              className="relative rounded-full p-3 transition hover:bg-slate-100 hover:text-emerald-600"
+            >
+              <FaShoppingCart />
+
+              <span className="absolute right-1 top-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] text-white">
+                0
+              </span>
+            </Link>
+
+            {user ? (
+              <Link
+                to="/profile/edit"
+                className="ml-3 flex items-center gap-3 rounded-full border border-slate-200 px-3 py-2 transition hover:border-emerald-500"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100">
+                  <FaUserCircle className="text-xl text-emerald-600" />
+                </div>
+
+                <div>
+                  <p className="text-xs text-slate-500">Selamat Datang</p>
+
+                  <p className="max-w-[140px] truncate text-sm font-semibold">
+                    {user.fullName}
+                  </p>
+                </div>
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                className="ml-3 rounded-full bg-emerald-600 px-5 py-2.5 font-semibold text-white transition hover:bg-emerald-700"
+              >
+                Login
+              </Link>
+            )}
+          </div>
+
+          <div className="flex items-center gap-2 lg:hidden">
+            <Link
+              to="/cart"
+              className="relative rounded-full p-3 transition hover:bg-slate-100"
+            >
+              <FaShoppingCart />
+
+              <span className="absolute right-1 top-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] text-white">
+                0
+              </span>
+            </Link>
+
+            <button className="rounded-full p-3 transition hover:bg-slate-100">
+              <FaBars />
+            </button>
+          </div>
         </div>
 
-        <div className="flex items-center overflow-hidden rounded-lg w-2/4 border border-gray-300">
-          <input
-            type="text"
-            placeholder="Cari produk,merek,kategori..."
-            className="w-full px-4 text-sm py-2 bg-gray-100 outline-none"
-          />
+        <div className="pb-5 lg:hidden">
+          <div className="relative">
+            <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
 
-          <button className="bg-blue-600 px-4 py-2 cursor-pointer text-white hover:bg-blue-700 transition">
-            <Search className="w-5 h-5" />
-          </button>
-        </div>
-
-        <div className="flex items-center gap-6 text-gray-600">
-          <button className="transition cursor-pointer hover:text-blue-600">
-            <Bell className="h-5 w-5" />
-          </button>
-
-          {user ? (
-            <Link
-              to="/profile/edit"
-              className="flex items-center gap-2 transition hover:text-blue-600"
-            >
-              <User className="h-5 w-5" />
-              <span>{user.fullName}</span>
-            </Link>
-          ) : (
-            <Link
-              to="/login"
-              className="flex items-center gap-2 transition hover:text-blue-600"
-            >
-              <User className="h-5 w-5" />
-              <span>Login</span>
-            </Link>
-          )}
-
-          <Link
-            to="/profile/wishlist"
-            className="transition hover:text-blue-600"
-          >
-            <Heart className="h-5 w-5" />
-          </Link>
-
-          <Link to="/cart" className="relative transition hover:text-blue-600">
-            <ShoppingCart className="h-5 w-5" />
-          </Link>
+            <input
+              aria-label="search"
+              type="text"
+              placeholder="Cari produk..."
+              className="w-full rounded-full border border-slate-200 bg-slate-50 py-3 pl-11 pr-4 text-sm outline-none transition focus:border-emerald-500 focus:bg-white"
+            />
+          </div>
         </div>
       </div>
     </nav>

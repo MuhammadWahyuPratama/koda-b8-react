@@ -2,6 +2,7 @@ import {
   bgLandingPage,
   bgLandingPage1,
   headphoneWirelessPremium,
+  
 } from "../../assets";
 import CategorySection from "../../components/home/CategorySection";
 import Hero from "../../components/home/Hero";

@@ -6,6 +6,7 @@ import authRegister from "./auth-register.jpg";
 // Hero
 import hero from "./hero.png";
 import hero2 from "./hero2.png";
+import hero3 from "./hero3.png";
 
 // Categories
 import bukuAlatTulis from "./Buku & Alat Tulis.svg";
@@ -22,9 +23,8 @@ import reactLogo from "./react.svg";
 import viteLogo from "./vite.svg";
 
 // landing page
-import bgLandingPage from "./Electronics sale.svg"
-import bgLandingPage1 from "./Fashion sale.svg" 
-
+import bgLandingPage from "./Electronics sale.svg";
+import bgLandingPage1 from "./Fashion sale.svg";
 
 export {
   // Auth
@@ -35,6 +35,7 @@ export {
   // Hero
   hero,
   hero2,
+  hero3,
 
   // Categories
   bukuAlatTulis,
@@ -52,5 +53,5 @@ export {
 
   // Landing page
   bgLandingPage,
-  bgLandingPage1
+  bgLandingPage1,
 };

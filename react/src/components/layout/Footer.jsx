@@ -1,10 +1,6 @@
-import {
-  FaFacebook,
-  FaFacebookF,
-  FaInstagram,
-  FaTwitter,
-  FaYoutube,
-} from "react-icons/fa";
+import { Link } from "react-router-dom";
+
+import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 import {
   FiMapPin,
@@ -14,174 +10,266 @@ import {
   FiShield,
   FiRotateCcw,
   FiHeadphones,
+  FiSend,
 } from "react-icons/fi";
+
+const features = [
+  {
+    icon: FiShoppingBag,
+    title: "Gratis Ongkir",
+    desc: "Pembelian di atas Rp100.000",
+  },
+  {
+    icon: FiShield,
+    title: "Pembayaran Aman",
+    desc: "Transaksi terenkripsi & terpercaya",
+  },
+  {
+    icon: FiRotateCcw,
+    title: "Mudah Dikembalikan",
+    desc: "Garansi retur hingga 30 hari",
+  },
+  {
+    icon: FiHeadphones,
+    title: "Customer Support",
+    desc: "Siap membantu 24 jam",
+  },
+];
+
+const shopLinks = [
+  "Kategori",
+  "Flash Sale",
+  "Produk Terbaru",
+  "Promo",
+  "Best Seller",
+];
+
+const helpLinks = [
+  "Cara Belanja",
+  "Lacak Pesanan",
+  "Pengembalian",
+  "FAQ",
+  "Hubungi Kami",
+];
+
+const companyLinks = [
+  "Tentang Kami",
+  "Karir",
+  "Blog",
+  "Kemitraan",
+  "Kebijakan Privasi",
+];
+
+const socials = [
+  {
+    icon: FaFacebookF,
+  },
+  {
+    icon: FaInstagram,
+  },
+  {
+    icon: FaTwitter,
+  },
+  {
+    icon: FaYoutube,
+  },
+];
 
 function Footer() {
   return (
-    <footer className="w-full bg-[#07162E] text-white mt-20">
-      {/* Top Feature */}
-      <section className="border-b border-slate-700">
-        <div className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-4 gap-8">
-          <div className="flex gap-4">
-            <div className="bg-blue-600/20 p-3 rounded-full">
-              <FiShoppingBag className="w-5 h-5 text-blue-500" />
-            </div>
+    <footer className="relative mt-24 overflow-hidden bg-gradient-to-b from-slate-900 via-slate-950 to-black text-white">
+      <div className="absolute -left-32 top-0 h-72 w-72 rounded-full bg-emerald-500/10 blur-3xl"></div>
 
-            <div>
-              <h3 className="text-sm font-semibold">Gratis Ongkir</h3>
-              <p className="text-xs text-gray-400">
-                Pembelian di atas Rp 100.000
-              </p>
-            </div>
-          </div>
+      <div className="absolute right-0 bottom-0 h-72 w-72 rounded-full bg-emerald-500/10 blur-3xl"></div>
 
-          <div className="flex gap-4">
-            <div className="bg-blue-600/20 p-3 rounded-full">
-              <FiShield className="w-5 h-5 text-blue-500" />
-            </div>
+      <section className="relative border-b border-white/10">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-5 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
 
-            <div>
-              <h3 className="text-sm font-semibold">Pembayaran Aman</h3>
-              <p className="text-xs text-gray-400">SSL terenkripsi 256-bit</p>
-            </div>
-          </div>
+            return (
+              <div
+                key={index}
+                className="group flex items-start gap-4 rounded-2xl border border-white/5 bg-white/5 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/30 hover:bg-white/10 hover:shadow-xl"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 transition-all duration-300 group-hover:bg-emerald-500">
+                  <Icon className="h-6 w-6 text-emerald-400 transition-all duration-300 group-hover:text-white" />
+                </div>
 
-          <div className="flex gap-4">
-            <div className="bg-blue-600/20 p-3 rounded-full">
-              <FiRotateCcw className="w-5 h-5 text-blue-500" />
-            </div>
+                <div>
+                  <h3 className="font-semibold text-white">{feature.title}</h3>
 
-            <div>
-              <h3 className="text-sm font-semibold">Pengembalian Mudah</h3>
-              <p className="text-xs text-gray-400">
-                30 hari pengembalian gratis
-              </p>
-            </div>
-          </div>
-
-          <div className="flex gap-4">
-            <div className="bg-blue-600/20 p-3 rounded-full">
-              <FiHeadphones className="w-5 h-5 text-blue-500" />
-            </div>
-
-            <div>
-              <h3 className="text-sm font-semibold">Dukungan 24/7</h3>
-              <p className="text-xs text-gray-400">Bantuan kapan saja</p>
-            </div>
-          </div>
+                  <p className="mt-1 text-sm leading-6 text-gray-400">
+                    {feature.desc}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
-      {/* Main Footer */}
-      <section className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-4 gap-16">
-        {/* Logo */}
-        <div>
-          <div className="flex items-center gap-2 mb-4">
-            <div className="bg-blue-600 w-8 h-8 rounded-md flex items-center justify-center font-bold">
-              B
-            </div>
+      <section className="relative">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 py-16 md:grid-cols-2 xl:grid-cols-5">
+          <div className="xl:col-span-2">
+            <Link to="/" className="inline-flex items-center gap-3">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500 font-bold text-white shadow-lg shadow-emerald-500/20">
+                B
+              </div>
 
-            <h2 className="font-semibold text-xl">BeliMudah</h2>
-          </div>
+              <div>
+                <h2 className="text-2xl font-bold tracking-tight">BeliMudah</h2>
 
-          <p className="text-sm text-gray-400 leading-7">
-            Platform belanja online terpercaya dengan ribuan produk pilihan.
-            Belanja mudah, aman, dan menyenangkan.
-          </p>
+                <p className="text-sm text-gray-400">
+                  Belanja Online Indonesia
+                </p>
+              </div>
+            </Link>
 
-          <div className="flex gap-3 mt-6">
-            <div className="bg-slate-700 p-2 rounded-full">
-              <FaFacebook size={16} />
-            </div>
+            <p className="mt-6 max-w-md leading-8 text-gray-400">
+              Temukan ribuan produk pilihan dengan harga terbaik. Nikmati
+              pengalaman belanja online yang cepat, aman, dan nyaman hanya di
+              BeliMudah.
+            </p>
 
-            <div className="bg-slate-700 p-2 rounded-full">
-              <FaInstagram size={16} />
-            </div>
+            <div className="mt-8 flex flex-wrap gap-4">
+              {socials.map((social, index) => {
+                const Icon = social.icon;
 
-            <div className="bg-slate-700 p-2 rounded-full">
-              <FaTwitter size={16} />
-            </div>
-
-            <div className="bg-slate-700 p-2 rounded-full">
-              <FaYoutube size={16} />
-            </div>
-          </div>
-        </div>
-
-        {/* Layanan */}
-        <div>
-          <h3 className="font-semibold mb-5">Layanan</h3>
-
-          <ul className="space-y-3 text-sm text-gray-400">
-            <li>Tentang Kami</li>
-            <li>Karir</li>
-            <li>Blog</li>
-            <li>Program Afiliasi</li>
-            <li>Jual di BeliMudah</li>
-          </ul>
-        </div>
-
-        {/* Bantuan */}
-        <div>
-          <h3 className="font-semibold mb-5">Bantuan</h3>
-
-          <ul className="space-y-3 text-sm text-gray-400">
-            <li>Cara Belanja</li>
-            <li>Kebijakan Pengembalian</li>
-            <li>Lacak Pesanan</li>
-            <li>FAQ</li>
-            <li>Hubungi Kami</li>
-          </ul>
-        </div>
-
-        {/* Kontak */}
-        <div>
-          <h3 className="font-semibold mb-5">Kontak</h3>
-
-          <div className="space-y-4 text-sm text-gray-400">
-            <div className="flex gap-3">
-              <FiMapPin size={18} />
-              <p>Jl. Sudirman No.1, Jakarta Selatan, DKI Jakarta 12190</p>
-            </div>
-
-            <div className="flex gap-3">
-              <FiPhone size={18} />
-              <p>0800-1234-5678 (Gratis)</p>
-            </div>
-
-            <div className="flex gap-3">
-              <FiMail size={18} />
-              <p>bantuan@belimudah.id</p>
+                return (
+                  <button
+                    key={index}
+                    className="group flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500 hover:bg-emerald-500 hover:shadow-lg hover:shadow-emerald-500/30"
+                  >
+                    <Icon className="text-slate-300 transition-colors duration-300 group-hover:text-white" />
+                  </button>
+                );
+              })}
             </div>
           </div>
 
-          <div className="bg-slate-800 w-full rounded-lg p-3 mt-6">
-            <p className="text-sm mb-3">Newsletter</p>
+          <div>
+            <h3 className="mb-6 text-lg font-semibold text-white">Belanja</h3>
 
-            <div className="flex items-center gap-2">
-              <input
-                type="email"
-                placeholder="Email kamu"
-                className="flex-1 min-w-0 bg-slate-700 rounded px-3 py-2 text-sm outline-none"
-              />
+            <ul className="space-y-4">
+              {shopLinks.map((item) => (
+                <li key={item}>
+                  <Link
+                    to="/products"
+                    className="text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-emerald-400"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-              <button className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-sm whitespace-nowrap shrink-0">
-                Langganan
+          <div>
+            <h3 className="mb-6 text-lg font-semibold text-white">Bantuan</h3>
+
+            <ul className="space-y-4">
+              {helpLinks.map((item) => (
+                <li key={item}>
+                  <Link
+                    to="/"
+                    className="text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-emerald-400"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="mb-6 text-lg font-semibold text-white">
+              Tetap Terhubung
+            </h3>
+
+            <p className="mb-6 text-sm leading-7 text-gray-400">
+              Dapatkan promo eksklusif, diskon spesial, dan informasi produk
+              terbaru langsung ke email kamu.
+            </p>
+
+            <div className="space-y-4">
+              <div className="relative">
+                <input
+                  aria-label="email"
+                  type="email"
+                  placeholder="Masukkan email..."
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 pr-12 text-sm text-white placeholder:text-slate-500 outline-none transition-all duration-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
+                />
+
+                <FiMail className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500" />
+              </div>
+
+              <button className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 font-medium transition-all duration-300 hover:scale-[1.02] hover:bg-emerald-600 active:scale-95">
+                <FiSend />
+                Berlangganan
               </button>
             </div>
+
+            <div className="mt-8 space-y-4">
+              <div className="flex items-start gap-3">
+                <FiMapPin className="mt-1 text-emerald-400" />
+
+                <p className="text-sm leading-6 text-gray-400">
+                  Jakarta Selatan, Indonesia
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <FiPhone className="text-emerald-400" />
+
+                <p className="text-sm text-gray-400">0800-1234-5678</p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <FiMail className="text-emerald-400" />
+
+                <p className="text-sm text-gray-400">support@belimudah.id</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Bottom */}
-      <section className="border-t border-slate-700">
-        <div className="max-w-7xl mx-auto px-4 py-5 flex justify-between items-center text-xs text-gray-400">
-          <p>© 2026 BeliMudah. Seluruh hak cipta dilindungi.</p>
+      <section className="relative">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-4 py-6 text-sm text-slate-500 md:flex-row">
+          <p className="text-center md:text-left">
+            © 2026 <span className="font-semibold text-white">BeliMudah</span>.
+            All Rights Reserved.
+          </p>
 
-          <div className="flex gap-6">
-            <p>Kebijakan Privasi</p>
-            <p>Syarat & Ketentuan</p>
-            <p>Admin</p>
+          <div className="flex flex-wrap items-center justify-center gap-6">
+            <Link
+              to="/"
+              className="transition-colors duration-300 hover:text-emerald-400"
+            >
+              Privacy
+            </Link>
+
+            <Link
+              to="/"
+              className="transition-colors duration-300 hover:text-emerald-400"
+            >
+              Terms
+            </Link>
+
+            <Link
+              to="/"
+              className="transition-colors duration-300 hover:text-emerald-400"
+            >
+              Cookies
+            </Link>
+
+            <Link
+              to="/"
+              className="transition-colors duration-300 hover:text-emerald-400"
+            >
+              Sitemap
+            </Link>
           </div>
         </div>
       </section>

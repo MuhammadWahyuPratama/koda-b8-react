@@ -1,67 +1,215 @@
-import { ChevronDown, Menu } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { MdOutlineCategory } from "react-icons/md";
+import { IoIosArrowDown } from "react-icons/io";
+import {
+  FaLaptop,
+  FaTshirt,
+  FaHome,
+  FaSpa,
+  FaDumbbell,
+  FaBook,
+  FaFire,
+} from "react-icons/fa";
+
+const categories = [
+  {
+    name: "Elektronik",
+    icon: FaLaptop,
+  },
+  {
+    name: "Fashion",
+    icon: FaTshirt,
+  },
+  {
+    name: "Rumah & Dapur",
+    icon: FaHome,
+  },
+  {
+    name: "Kecantikan",
+    icon: FaSpa,
+  },
+  {
+    name: "Olahraga",
+    icon: FaDumbbell,
+  },
+  {
+    name: "Buku & Alat Tulis",
+    icon: FaBook,
+  },
+];
 
 function CategoryBar() {
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState("Semua Kategori");
+
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleSelect = (category) => {
+    setSelected(category);
+    setOpen(false);
+  };
+
   return (
-    <nav className="w-full border-b border-gray-200 bg-white pl-10">
-      <div className="mx-auto flex max-w-7xl items-center gap-5 px-4 py-3">
-        <button
-          type="button"
-          className="flex cursor-pointer items-center gap-2 text-sm font-medium hover:text-blue-600 transition-colors"
-        >
-          <Menu className="h-4 w-4" />
-          <span> Semua Kategori</span>
-          <ChevronDown className="h-4 w-4" />
-        </button>
+    <nav className="border-b border-slate-200 bg-slate-50">
+      <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6">
+        <div className="flex flex-col gap-3 lg:hidden">
+          <div ref={dropdownRef} className="relative">
+            <button
+              onClick={() => setOpen(!open)}
+              className="flex w-full items-center justify-between rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm transition-all hover:border-emerald-500"
+            >
+              <div className="flex items-center gap-3">
+                <MdOutlineCategory className="text-xl text-emerald-600" />
 
-        <div className="flex items-center gap-8 text-sm text-gray-600">
-          <button
-            type="button"
-            className="cursor-pointer flex items-center gap-2 hover:text-blue-600 transition-colors"
-          >
-            💻 Elektronik
-          </button>
+                <span className="font-medium text-slate-700">{selected}</span>
+              </div>
 
-          <button
-            type="button"
-            className="cursor-pointer flex items-center gap-2 hover:text-blue-600 transition-colors"
-          >
-            👗 Fashion
-          </button>
+              <IoIosArrowDown
+                className={`transition duration-300 ${
+                  open ? "rotate-180" : ""
+                }`}
+              />
+            </button>
 
-          <button
-            type="button"
-            className="cursor-pointer flex items-center gap-2 hover:text-blue-600 transition-colors"
-          >
-            🏠 Rumah & Dapur
-          </button>
+            {open && (
+              <div className="absolute left-0 top-16 z-50 w-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl">
+                {categories.map((item) => {
+                  const Icon = item.icon;
 
-          <button
-            type="button"
-            className="cursor-pointer flex items-center gap-2 hover:text-blue-600 transition-colors"
-          >
-            💄 Kecantikan
-          </button>
+                  return (
+                    <button
+                      key={item.name}
+                      onClick={() => handleSelect(item.name)}
+                      className={`flex w-full items-center gap-3 px-5 py-3 text-left transition ${
+                        selected === item.name
+                          ? "bg-emerald-50"
+                          : "hover:bg-emerald-50"
+                      }`}
+                    >
+                      <div className="rounded-lg bg-emerald-100 p-2">
+                        <Icon className="text-emerald-600" size={15} />
+                      </div>
 
-          <button
-            type="button"
-            className="cursor-pointer flex items-center gap-2 hover:text-blue-600 transition-colors"
-          >
-            ⚽ Olahraga
-          </button>
+                      <span className="text-sm font-medium text-slate-700">
+                        {item.name}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
 
-          <button
-            type="button"
-            className="cursor-pointer flex items-center gap-2 hover:text-blue-600 transition-colors"
-          >
-            📚 Buku & Alat Tulis
-          </button>
+          <div className="scrollbar-hide flex gap-2 overflow-x-auto pb-1">
+            {categories.map((item) => {
+              const Icon = item.icon;
 
-          <button
-            type="button"
-            className="cursor-pointer flex items-center gap-2 text-red-500 hover:text-red-600 transition-colors"
-          >
-            🔥 Promo
-          </button>
+              return (
+                <button
+                  key={item.name}
+                  onClick={() => setSelected(item.name)}
+                  className={`flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm transition-all ${
+                    selected === item.name
+                      ? "bg-emerald-600 text-white"
+                      : "bg-white text-slate-600 hover:bg-emerald-100 hover:text-emerald-600"
+                  }`}
+                >
+                  <Icon size={14} />
+                  {item.name}
+                </button>
+              );
+            })}
+
+            <button className="flex shrink-0 items-center gap-2 rounded-full bg-red-50 px-4 py-2 text-sm font-medium text-red-500 transition hover:bg-red-100">
+              <FaFire size={14} />
+              Promo
+            </button>
+          </div>
+        </div>
+
+        <div className="hidden items-center gap-4 lg:flex">
+          <div ref={dropdownRef} className="relative">
+            <button
+              onClick={() => setOpen(!open)}
+              className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-5 py-2.5 shadow-sm transition hover:border-emerald-500"
+            >
+              <MdOutlineCategory className="text-xl text-emerald-600" />
+
+              <span className="font-medium text-slate-700">{selected}</span>
+
+              <IoIosArrowDown
+                className={`transition duration-300 ${
+                  open ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            {open && (
+              <div className="absolute left-0 top-14 z-50 w-72 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl">
+                {categories.map((item) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <button
+                      key={item.name}
+                      onClick={() => handleSelect(item.name)}
+                      className={`flex w-full items-center gap-3 px-5 py-3 text-left transition ${
+                        selected === item.name
+                          ? "bg-emerald-50"
+                          : "hover:bg-emerald-50"
+                      }`}
+                    >
+                      <div className="rounded-lg bg-emerald-100 p-2">
+                        <Icon className="text-emerald-600" size={15} />
+                      </div>
+
+                      <span className="text-sm font-medium text-slate-700">
+                        {item.name}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          <div className="scrollbar-hide flex flex-1 items-center gap-2 overflow-x-auto">
+            {categories.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <button
+                  key={item.name}
+                  onClick={() => setSelected(item.name)}
+                  className={`flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm transition-all ${
+                    selected === item.name
+                      ? "bg-emerald-600 text-white"
+                      : "text-slate-600 hover:bg-emerald-100 hover:text-emerald-600"
+                  }`}
+                >
+                  <Icon size={14} />
+                  {item.name}
+                </button>
+              );
+            })}
+
+            <button className="flex shrink-0 items-center gap-2 rounded-full bg-red-50 px-4 py-2 text-sm font-medium text-red-500 transition hover:bg-red-100">
+              <FaFire size={14} />
+              Promo
+            </button>
+          </div>
         </div>
       </div>
     </nav>

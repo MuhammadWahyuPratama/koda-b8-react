@@ -1,6 +1,6 @@
 import { FaStar, FaCheck, FaShoppingCart } from "react-icons/fa";
 import { GoChevronRight } from "react-icons/go";
-import { headphoneWirelessPremium } from "../../assets";
+import { bukuAlatTulis, headphoneWirelessPremium } from "../../assets";
 import ProductSection from "../../components/home/ProductSection";
 import wishlistService from "../../services/wishlistService";
 
@@ -13,10 +13,19 @@ import {
   FiPlus,
 } from "react-icons/fi";
 import cartService from "../../services/cartService";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function DetailPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
+
+  const handleBuyNow = () => {
+    cartService.clearCart();
+
+    cartService.addToCart(product);
+
+    navigate("/checkout/shipping");
+  };
 
   console.log(id);
   const product = {
@@ -35,8 +44,6 @@ function DetailPage() {
 
   const handleAddToCart = () => {
     cartService.addToCart(product);
-
-    alert("Produk berhasil ditambahkan ke keranjang");
   };
 
   const produkTerkait = [
@@ -53,13 +60,13 @@ function DetailPage() {
     },
     {
       id: 2,
-      image: headphoneWirelessPremium,
+      image: bukuAlatTulis,
       brand: "SoundWave",
-      name: "Headphone Wireless Premium",
+      name: "Buku dan alat tulis",
       rating: 4.8,
       review: 512,
-      price: 450000,
-      oldPrice: 650000,
+      price: 650000,
+      oldPrice: 750000,
       discount: "-31%",
     },
     {
@@ -229,15 +236,16 @@ function DetailPage() {
               Tambah ke Keranjang
             </button>
 
-            <button className="bg-orange-500 text-base rounded-xl py-3 text-white font-medium hover:bg-orange-600 cursor-pointer">
+            <button
+              onClick={handleBuyNow}
+              className="bg-orange-500 text-base rounded-xl py-3 text-white font-medium hover:bg-orange-600 cursor-pointer"
+            >
               Beli Sekarang
             </button>
 
             <button
               onClick={() => {
                 wishlistService.addToWishlist(product);
-
-                alert("Produk ditambahkan ke wishlist");
               }}
               className="border-gray-100 border rounded-xl flex justify-center items-center hover:bg-gray-100 cursor-pointer"
             >

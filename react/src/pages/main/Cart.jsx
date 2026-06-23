@@ -71,14 +71,13 @@ function Cart() {
                     </div>
 
                     <button
+                      className="flex gap-2 mt-4 justify-center items-center cursor-pointer"
                       onClick={() => {
                         wishlistService.addToWishlist(item);
 
                         cartService.removeItem(item.id);
 
                         setCart(cartService.getCart());
-
-                        alert("Produk dipindahkan ke Wishlist");
                       }}
                     >
                       <FiHeart />

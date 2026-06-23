@@ -1,63 +1,67 @@
-import { ArrowRight, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
-import { hero, hero2 } from "../../assets";
+import { FaArrowRight } from "react-icons/fa";
+import { hero3 } from "../../assets";
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-r from-[#4F39F6] to-[#8200DB]">
-      <div className="mx-auto flex h-[420px] max-w-7xl items-center px-6">
-        <div className="z-10 w-full lg:w-1/2">
-          <div className="flex flex-col gap-5">
-            <div className="text-white flex flex-col gap-5">
-              <h1 className="text-2xl font-bold  sm:text-3xl lg:text-4xl">
-                Elektronik Pilihan, Harga
-              </h1>
+    <section className="relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-emerald-50">
+      <div className="absolute -left-32 top-10 h-72 w-72 rounded-full bg-emerald-100 blur-[120px] opacity-70" />
 
-              <h1 className="text-2xl font-bold  sm:text-3xl lg:text-4xl">
-                 Spesial
-              </h1>
-            </div>
+      <div className="absolute right-0 top-1/2 h-[520px] w-128 -translate-y-1/2 rounded-full bg-emerald-100/80 blur-3xl" />
 
-            <div className="text-sm text-gray-200 sm:text-base lg:text-base">
-              <p>Laptop, Smartphone, Headphone, dan masih banyak lagi</p>
-              <p>dengan diskon hingga 40%</p>
-            </div>
-
-            <Link
-              to="/products"
-              className="flex w-52 items-center gap-2 rounded-xl text-base bg-white px-6 py-4 font-semibold text-blue-600 transition hover:bg-gray-100"
-            >
-              Lihat Promo
-              <ArrowRight className="h-5 w-5 " />
-            </Link>
+      <div className="mx-auto flex max-w-7xl flex-col-reverse items-center gap-14 px-4 py-16 sm:px-6 lg:flex-row lg:gap-10 lg:py-24">
+        {/* LEFT */}
+        <div className="z-10 flex-1 text-center lg:text-left">
+          <div className="mb-6 inline-flex rounded-full bg-emerald-100 px-4 py-2">
+            <span className="text-sm font-semibold text-emerald-700">
+              🔥 Mega Sale 2026
+            </span>
           </div>
+
+          <h1 className="text-4xl font-extrabold leading-tight text-slate-900 sm:text-5xl lg:text-6xl">
+            Belanja Mudah
+            <span className="mt-2 block text-emerald-600">
+              Untuk Semua Kebutuhan
+            </span>
+          </h1>
+
+          <p className="mx-auto mt-6 max-w-lg text-base leading-8 text-slate-500 lg:mx-0 lg:text-lg">
+            Temukan ribuan produk pilihan dengan harga terbaik setiap hari.
+          </p>
+
+          <Link
+            to="/products"
+            className="mt-8 inline-flex items-center gap-3 rounded-full bg-emerald-600 px-7 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-emerald-700 hover:shadow-2xl"
+          >
+            Belanja Sekarang
+            <FaArrowRight />
+          </Link>
+        </div>
+
+        {/* RIGHT */}
+        <div className="relative flex flex-1 justify-center">
+          <img
+            src={hero3}
+            alt="Hero"
+            className="
+            relative
+            rounded-2xl
+            z-10
+            w-full
+            max-w-sm
+            drop-shadow-[0_35px_40px_rgba(0,0,0,.15)]
+            transition-all
+            duration-700
+            hover:scale-105
+            sm:max-w-md
+            md:max-w-xl
+            lg:max-w-2xl
+            "
+          />
         </div>
       </div>
 
-      
-      <img
-        src={hero2}
-        alt="Hero"
-        className="absolute bottom-0 right-0 hidden lg:block w-[580px] xl:w-[680px] 2xl:w-[760px]
-        "
-      />
-
-      <button className="absolute left-6 top-1/2 -translate-y-1/2 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white transition cursor-pointer hover:bg-white/30">
-        <ArrowLeft className="h-6 w-6 hidden lg:flex" />
-      </button>
-
-      <button className="absolute right-6 top-1/2 -translate-y-1/2 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white transition cursor-pointer hover:bg-white/30">
-        <ArrowRight className="h-6 w-6 hidden lg:flex" />
-      </button>
-
-    
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#4F39F6]/10 to-[#8200DB]/20" />
-
-      <div className="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 gap-3">
-        <span className="h-3 w-3 rounded-full bg-white/40"></span>
-        <span className="h-3 w-8 rounded-full bg-white"></span>
-        <span className="h-3 w-3 rounded-full bg-white/40"></span>
-      </div>
+      <div className="absolute bottom-0 left-0 h-24 w-full bg-gradient-to-t from-white to-transparent" />
     </section>
   );
 }
