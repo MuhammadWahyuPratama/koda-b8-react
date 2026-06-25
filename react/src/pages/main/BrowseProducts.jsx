@@ -5,7 +5,7 @@ import { useSearchParams } from "react-router-dom";
 
 function BrowseProducts() {
   const products = productService.getProducts();
-  conts[searchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const keyword = searchParams.get("search") || "";
 
   const product = keyword
@@ -36,7 +36,7 @@ function BrowseProducts() {
           ))}
         </div>
       )}
-      
+
       <section className="grid grid-cols-[260px_1fr] gap-8">
         <aside className="border border-gray-200 rounded-xl p-5 h-fit">
           <div className="mb-8">
