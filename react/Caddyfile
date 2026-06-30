@@ -1,0 +1,10 @@
+
+:8080 {
+    root * /home/pra/koda-b8-react/react/dist
+
+    encode gzip
+
+    file_server
+
+    try_files {path} /index.html
+}

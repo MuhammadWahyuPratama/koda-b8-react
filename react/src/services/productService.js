@@ -57,6 +57,30 @@ const productService = {
       );
     });
   },
+  
+  getFilteredProducts({ keyword = "", category = "" }) {
+    let products = this.getProducts();
+
+    if (keyword.trim()) {
+      const search = keyword.trim().toLowerCase();
+
+      products = products.filter((product) => {
+        return (
+          product.name.toLowerCase().includes(search) ||
+          product.brand.toLowerCase().includes(search) ||
+          product.category.toLowerCase().includes(search)
+        );
+      });
+    }
+
+    if (category.trim()) {
+      products = products.filter(
+        (product) => product.category.toLowerCase() === category.toLowerCase(),
+      );
+    }
+
+    return products;
+  },
 };
 
 export default productService;
